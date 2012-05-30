@@ -5,6 +5,7 @@ Release:    1
 Group:      utils
 License:    GPLv1
 Source0:    ltrace-0.5.3.tar.gz
+Source1001: packaging/ltrace.manifest 
 BuildRequires:  binutils-devel
 BuildRequires:  elfutils-libelf-devel
 
@@ -27,6 +28,7 @@ Tracks runtime library calls in dynamically linked programs
 %setup -q
 
 %build
+cp %{SOURCE1001} .
 
 %configure --disable-static
 make %{?jobs:-j%jobs}
@@ -37,6 +39,7 @@ rm -rf %{buildroot}
 rm -rf %{buildroot}%{_prefix}/share/doc/ltrace
 
 %files
+%manifest ltrace.manifest
 %defattr(-,root,root,-)
 %doc README COPYING
 %{_sysconfdir}/ltrace.conf

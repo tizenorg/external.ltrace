@@ -1,6 +1,7 @@
+#sbs-git:slp/pkgs/l/ltrace ltrace 0.5.3 8b9a04c3142617c3019ee9e6eae64eda9a32c4ee
 Name:       ltrace
 Summary:    Tracks runtime library calls in dynamically linked programs
-Version:    0.5.3
+Version: 0.5.3
 Release:    1
 Group:      utils
 License:    GPLv1

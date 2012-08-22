@@ -1,3 +1,11 @@
+ltrace (0.5.3-2slp1) unstable; urgency=low
+
+  * upload spec file for rpm
+  * Git: slp/pkgs/l/ltrace
+  * Tag: ltrace_0.5.3-2slp1
+
+ -- Hyungdeuk Kim <hd3.kim@samsung.com>  Wed, 14 Mar 2012 17:24:44 +0200
+
 ltrace (0.5.3-2) unstable; urgency=low
 
   * Fixed compilation problems in armel, ia64 and powerpc (closes: Bug#538441)

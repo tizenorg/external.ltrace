@@ -48,10 +48,6 @@ do
 	done;
 done
 
-# license
-mkdir -p %{buildroot}/usr/share/license
-cp COPYING %{buildroot}/usr/share/license/%{name}
-
 %files
 %manifest %{name}.manifest
 %defattr(-,root,root,-)
@@ -60,4 +56,3 @@ cp COPYING %{buildroot}/usr/share/license/%{name}
 %{_sysconfdir}/ltrace.conf
 %{_bindir}/ltrace
 %{_mandir}/man1/ltrace.1.gz
-/usr/share/license/%{name}

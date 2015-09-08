@@ -1,11 +1,12 @@
 #sbs-git:slp/pkgs/l/ltrace ltrace 0.5.3 8b9a04c3142617c3019ee9e6eae64eda9a32c4ee
 Name:       ltrace
 Summary:    Tracks runtime library calls in dynamically linked programs
-Version: 0.5.3
-Release:    1
+Version:    0.5.3
+Release:    4
 Group:      utils
 License:    GPLv1
 Source0:    ltrace-0.5.3.tar.gz
+Source1001:     %{name}.manifest
 BuildRequires:  binutils-devel
 BuildRequires:  elfutils-libelf-devel
 
@@ -28,18 +29,30 @@ Tracks runtime library calls in dynamically linked programs
 %setup -q
 
 %build
-
+cp %{SOURCE1001} .
 %configure --disable-static
-make %{?jobs:-j%jobs}
+make
 
 %install
 rm -rf %{buildroot}
 %make_install
 rm -rf %{buildroot}%{_prefix}/share/doc/ltrace
 
+mkdir -p $RPM_BUILD_ROOT%{_datadir}/license
+for keyword in LICENSE COPYING COPYRIGHT;
+do
+	for file in `find %{_builddir} -name $keyword`;
+	do
+		cat $file >> $RPM_BUILD_ROOT%{_datadir}/license/%{name};
+		echo "";
+	done;
+done
+
 %files
+%manifest %{name}.manifest
 %defattr(-,root,root,-)
 %doc README COPYING
+%{_datadir}/license/%{name}
 %{_sysconfdir}/ltrace.conf
 %{_bindir}/ltrace
 %{_mandir}/man1/ltrace.1.gz
